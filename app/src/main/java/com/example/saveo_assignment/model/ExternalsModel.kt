@@ -1,6 +1,7 @@
 package com.example.saveo_assignment.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class ExternalsModel(
 
@@ -12,4 +13,4 @@ data class ExternalsModel(
 
 	@field:SerializedName("tvrage")
 	val tvrage: Int? = null
-)
+): Serializable

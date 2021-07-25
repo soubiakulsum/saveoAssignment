@@ -1,6 +1,7 @@
 package com.example.saveo_assignment.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class NetworkModel(
 
@@ -12,4 +13,4 @@ data class NetworkModel(
 
 	@field:SerializedName("id")
 	val id: Int? = null
-)
+): Serializable

@@ -4,15 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.saveo_assignment.R
+import com.example.saveo_assignment.clickListeners.ImageClickListener
 import com.example.saveo_assignment.model.ShowsModel
 import com.example.saveo_assignment.ui.viewholder.MoviesViewHolder
 
-class TrendingMoviesAdapter(private val trendingList: List<ShowsModel>) :
+class TrendingMoviesAdapter(private val trendingList: List<ShowsModel>,private val imageClickListener : ImageClickListener) :
     RecyclerView.Adapter<MoviesViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.movies_item_layout, parent, false)
-        return MoviesViewHolder(view)
+        return MoviesViewHolder(view,imageClickListener)
     }
 
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {

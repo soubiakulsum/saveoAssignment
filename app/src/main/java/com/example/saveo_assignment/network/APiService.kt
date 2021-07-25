@@ -1,6 +1,5 @@
 package com.example.saveo_assignment.network
 
-import com.example.saveo_assignment.model.MoviesResponseModelItem
 import com.example.saveo_assignment.model.ShowsModel
 import retrofit2.http.GET
 import retrofit2.http.Query

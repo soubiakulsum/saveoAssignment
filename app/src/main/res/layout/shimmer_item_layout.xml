@@ -9,8 +9,10 @@
     app:cardElevation="@dimen/_10sdp">
     <ImageView
         android:id="@+id/ivImgShow"
+        android:background="@color/colorGrey"
         android:transitionName="image_transition"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_130sdp"
         android:scaleType="centerCrop" />
+
 </androidx.cardview.widget.CardView>

@@ -1,6 +1,7 @@
 package com.example.saveo_assignment.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class LinksModel(
 
@@ -9,4 +10,4 @@ data class LinksModel(
 
 	@field:SerializedName("previousepisode")
 	val previousepisode: PreviousepisodeModel? = null
-)
+): Serializable

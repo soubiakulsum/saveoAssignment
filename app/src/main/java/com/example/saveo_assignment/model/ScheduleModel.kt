@@ -1,6 +1,7 @@
 package com.example.saveo_assignment.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class ScheduleModel(
 
@@ -9,4 +10,4 @@ data class ScheduleModel(
 
 	@field:SerializedName("time")
 	val time: String? = null
-)
+): Serializable
