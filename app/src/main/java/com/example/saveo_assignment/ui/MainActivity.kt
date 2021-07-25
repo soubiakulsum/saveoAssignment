@@ -39,6 +39,11 @@ class MainActivity : AppCompatActivity(), ImageClickListener {
         val view = binding.root
         setContentView(view)
 
+
+        binding.apply {
+            shimmerFrameLayout.startShimmerAnimation()
+        }
+
         val repository = MoviesRepository()
         val viewModelFactory = MoviesViewModelFactory(repository)
         val viewModel =
@@ -108,7 +113,7 @@ class MainActivity : AppCompatActivity(), ImageClickListener {
                                 val result = it.data!!
                                 moviesList.addAll(result)
                                 moviesAdapter.notifyDataSetChanged()
-                                Log.d("prabin", moviesList.size.toString())
+
                             })
                             loading = true
                         }
@@ -119,12 +124,7 @@ class MainActivity : AppCompatActivity(), ImageClickListener {
     }
 
 
-    override fun onResume() {
-        super.onResume()
-        binding.apply {
-            shimmerFrameLayout.startShimmerAnimation()
-        }
-    }
+
 
     private fun shimmerDisplay() {
         binding.apply {

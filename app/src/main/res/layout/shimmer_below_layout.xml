@@ -11,53 +11,38 @@
 
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_130sdp"
         android:layout_margin="@dimen/_5sdp"
         android:elevation="@dimen/_30sdp"
+        app:cardBackgroundColor="@color/colorGrey"
         app:cardCornerRadius="@dimen/_10sdp"
         app:cardElevation="@dimen/_10sdp">
 
-        <ImageView
-            android:layout_width="@dimen/_90sdp"
-            android:layout_height="@dimen/_130sdp"
-            android:background="@color/colorGrey"
-            android:scaleType="centerCrop"
-            android:transitionName="image_transition" />
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_130sdp"
         android:layout_margin="@dimen/_5sdp"
         android:elevation="@dimen/_30sdp"
+        app:cardBackgroundColor="@color/colorGrey"
         app:cardCornerRadius="@dimen/_10sdp"
         app:cardElevation="@dimen/_10sdp">
 
-        <ImageView
-            android:layout_width="@dimen/_90sdp"
-            android:layout_height="@dimen/_130sdp"
-            android:background="@color/colorGrey"
-            android:scaleType="centerCrop"
-            android:transitionName="image_transition" />
 
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="@dimen/_130sdp"
         android:layout_margin="@dimen/_5sdp"
         android:elevation="@dimen/_30sdp"
+        app:cardBackgroundColor="@color/colorGrey"
         app:cardCornerRadius="@dimen/_10sdp"
         app:cardElevation="@dimen/_10sdp">
 
-        <ImageView
-            android:layout_width="@dimen/_90sdp"
-            android:layout_height="@dimen/_130sdp"
-            android:background="@color/colorGrey"
-            android:scaleType="centerCrop"
-            android:transitionName="image_transition" />
 
     </androidx.cardview.widget.CardView>
 
