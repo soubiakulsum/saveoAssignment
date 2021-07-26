@@ -6,10 +6,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import androidx.activity.viewModels
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.view.ViewCompat
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,14 +17,15 @@ import com.example.saveo_assignment.R
 import com.example.saveo_assignment.clickListeners.ImageClickListener
 import com.example.saveo_assignment.databinding.ActivityMainBinding
 import com.example.saveo_assignment.model.ShowsModel
-import com.example.saveo_assignment.repositories.MoviesRepository
 import com.example.saveo_assignment.ui.adapter.MoviesAdapter
 import com.example.saveo_assignment.ui.adapter.TrendingMoviesAdapter
 import com.example.saveo_assignment.viewmodel.MoviesViewModel
-import com.example.saveo_assignment.viewmodel.MoviesViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), ImageClickListener {
 
+     val viewModel by viewModels<MoviesViewModel>()
     private lateinit var binding: ActivityMainBinding
     private var moviesList = mutableListOf<ShowsModel>()
     private lateinit var moviesAdapter: MoviesAdapter
@@ -39,28 +40,28 @@ class MainActivity : AppCompatActivity(), ImageClickListener {
         val view = binding.root
         setContentView(view)
 
-
+        /**
+         * starting the shimmer effect
+         */
         binding.apply {
             shimmerFrameLayout.startShimmerAnimation()
         }
-
-        val repository = MoviesRepository()
-        val viewModelFactory = MoviesViewModelFactory(repository)
-        val viewModel =
-            ViewModelProviders.of(this, viewModelFactory).get(MoviesViewModel::class.java)
 
         val layoutManager = GridLayoutManager(this, 3)
         setMoviesListRecycler(layoutManager)
 
         setTrendingMoviesRecycler()
-        callApi(viewModel)
 
+        callApi(viewModel)
 
         pagination(layoutManager, viewModel, this)
 
 
     }
 
+    /**
+     * calling the api  here.
+     */
 
     private fun callApi(viewModel: MoviesViewModel) {
 
@@ -75,6 +76,10 @@ class MainActivity : AppCompatActivity(), ImageClickListener {
         })
     }
 
+    /**
+     * setting the trending list recyclerview
+     */
+
     private fun setTrendingMoviesRecycler() {
         binding.rvTrendingList.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
@@ -82,12 +87,20 @@ class MainActivity : AppCompatActivity(), ImageClickListener {
         binding.rvTrendingList.adapter = trendingMoviesAdapter
     }
 
+    /**
+     * setting all the movie list recyclerview here
+     */
+
     private fun setMoviesListRecycler(layoutManager: GridLayoutManager) {
         binding.rvMoviesList.layoutManager = layoutManager
         moviesAdapter = MoviesAdapter(moviesList, this)
         binding.rvMoviesList.adapter = moviesAdapter
 
     }
+
+    /**
+     * function for the pagination
+     */
 
     private fun pagination(
         layoutManager: GridLayoutManager,
@@ -124,7 +137,9 @@ class MainActivity : AppCompatActivity(), ImageClickListener {
     }
 
 
-
+    /**
+     * function to display the shimmer effect
+     */
 
     private fun shimmerDisplay() {
         binding.apply {
@@ -137,9 +152,16 @@ class MainActivity : AppCompatActivity(), ImageClickListener {
         moviesList.clear()
     }
 
+    /**
+     * on click of each item its data will be passed to next activity through intent
+     */
+
     override fun onImageClicked(showsModel: ShowsModel, mIvImage: ImageView) {
         val intent = Intent(this, MovieDetailsActivity::class.java)
         intent.putExtra("movies", showsModel)
+        /**
+         * this is to give animation effect to the image while passing data to the next activity
+         */
         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
             this,
             mIvImage,

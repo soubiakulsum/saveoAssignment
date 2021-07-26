@@ -1,34 +1,23 @@
 package com.example.saveo_assignment.repositories
 
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.liveData
 import com.example.saveo_assignment.model.ShowsModel
 import com.example.saveo_assignment.network.APiService
 import com.example.saveo_assignment.network.Resource
 import com.example.saveo_assignment.network.ResponseHandler
-import com.example.saveo_assignment.network.RetrofitGenerator
-import com.example.saveo_assignment.pagination.MoviePagingSource
 import java.lang.Exception
+import javax.inject.Inject
 
-class MoviesRepository {
 
-    private val api: APiService = RetrofitGenerator.getInstance().create(APiService::class.java)
+class MoviesRepository  @Inject constructor(val aPiService: APiService){
 
     private val responseHandler = ResponseHandler()
 
-    fun getIncrementedPageNumber() =
-        Pager(
-            config = PagingConfig(
-                pageSize = 10,
-                maxSize = 100,
-                enablePlaceholders = false
-            ),
-            pagingSourceFactory = { MoviePagingSource(api) }
-        ).liveData
-
-    suspend fun getTheMovie(page : Int): Resource<List<ShowsModel>> {
-        val result = api.getMovies(page)
+    /**
+     * calling the function from ApiService and returning the resource list handling the
+     * success and exception if there are any.
+     */
+    suspend fun getMoviesList(page : Int): Resource<List<ShowsModel>> {
+        val result = aPiService.getMovies(page)
         try {
             return responseHandler.handleSuccess(result)
         } catch (e: Exception) {
