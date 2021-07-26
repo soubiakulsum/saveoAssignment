@@ -85,4 +85,6 @@ dependencies {
 
     // Jsoup For Html to text Conversion
     implementation 'org.jsoup:jsoup:1.14.1'
+
+    implementation 'com.airbnb.android:lottie:3.7.2'
 }

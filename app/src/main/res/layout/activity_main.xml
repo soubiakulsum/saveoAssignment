@@ -73,9 +73,9 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <include layout="@layout/shimmer_item_layout" />
+<!--                    <include layout="@layout/shimmer_item_layout" />-->
 
-                    <include layout="@layout/bottom_layout" />
+<!--                    <include layout="@layout/bottom_layout" />-->
 
                     <include layout="@layout/shimmer_below_layout" />
 
